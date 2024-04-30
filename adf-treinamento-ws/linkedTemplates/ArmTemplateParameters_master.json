@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-treinamento-ws"
+		},
+		"LS_DATABRICKS_accessToken": {
+			"value": ""
+		},
+		"LS_DATA_LAKE_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_SERVER_ONPREMISE_connectionString": {
+			"value": ""
+		},
+		"LS_DATABRICKS_properties_typeProperties_existingClusterId": {
+			"value": "0416-221816-6puiu1cx"
+		},
+		"LS_DATA_LAKE_properties_typeProperties_url": {
+			"value": "https://asatreinamentows.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
