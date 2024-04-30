@@ -1,0 +1,18 @@
+{
+	"name": "DS_STORAGE_ACCOUNT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DATA_LAKE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "landing_zone/cliente",
+				"fileSystem": "dados"
+			}
+		}
+	}
+}
