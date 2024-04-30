@@ -1,0 +1,60 @@
+{
+	"name": "DS_SQL_SERVER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_SERVER_ONPREMISE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "CODIGO_CLIENTE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NOME_CLIENTE",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_NASCIMENTO",
+				"type": "date"
+			},
+			{
+				"name": "IDADE_CLIENTE",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "DESCRICAO_ENDERECO",
+				"type": "varchar"
+			},
+			{
+				"name": "NUMERO_ENDERECO",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "NOME_CIDADE",
+				"type": "varchar"
+			},
+			{
+				"name": "NUMERO_TELEFONE",
+				"type": "varchar"
+			},
+			{
+				"name": "EMAIL_CLIENTE",
+				"type": "varchar"
+			},
+			{
+				"name": "OCUPACAO_CLIENTE",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TB_CLIENTE"
+		}
+	}
+}
