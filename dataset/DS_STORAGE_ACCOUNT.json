@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "00_cliente.csv",
 				"folderPath": "landing_zone/cliente",
 				"fileSystem": "dados"
 			}
