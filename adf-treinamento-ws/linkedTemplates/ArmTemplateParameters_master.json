@@ -20,6 +20,9 @@
 		"LS_DATA_LAKE_properties_typeProperties_url": {
 			"value": "https://asatreinamentows.dfs.core.windows.net/"
 		},
+		"LS_KEY_VAULT_properties_typeProperties_baseUrl": {
+			"value": "https://kv-treinamento-ws.vault.azure.net/"
+		},
 		"containerUri": {
 			"value": ""
 		},

@@ -26,6 +26,10 @@
 		"LS_DATA_LAKE_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://asatreinamentows.dfs.core.windows.net/"
+		},
+		"LS_KEY_VAULT_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-treinamento-ws.vault.azure.net/"
 		}
 	},
 	"variables": {
@@ -63,6 +67,19 @@
 						"type": "SecureString",
 						"value": "[parameters('LS_DATA_LAKE_accountKey')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_KEY_VAULT')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('LS_KEY_VAULT_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
@@ -507,7 +524,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/util/move_arquivo_cliente"
+							"notebookPath": "/util/04_move_arquivo_cliente"
 						},
 						"linkedServiceName": {
 							"referenceName": "LS_DATABRICKS",
