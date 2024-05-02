@@ -1,16 +1,22 @@
 {
 	"name": "LS_SQL_SERVER_ONPREMISE",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "integrated security=False;data source=localhost\\DBAASSISTS;initial catalog=TREINAMENTO;user id=adf",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhZjFiNTdkNC1hYTU4LTQxYmQtYTExYy00ZTgzZTg4NGMwMTciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LS_KEY_VAULT",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "user-sql-server-onpremise"
+			}
 		},
 		"connectVia": {
 			"referenceName": "IR-OnPremise",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
