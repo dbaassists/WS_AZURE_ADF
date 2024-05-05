@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/prj_data_quality/00_dq/02_dq_executa_cadastro_fonte_dado"
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/02_dq_executa_cadastro_fonte_dado"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
