@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Notebook1",
+				"name": "DQ - Cadastro Fonte Dados",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
