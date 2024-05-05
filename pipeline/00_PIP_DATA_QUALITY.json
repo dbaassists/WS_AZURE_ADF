@@ -15,10 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": {
-						"value": "/Repos/ws_projeto_azure/WS_DATABRICKS_20240503/prj_data_quality/00_dq/dq_executa_cadastro_fonte_dado.py",
-						"type": "Expression"
-					}
+					"notebookPath": "/prj_data_quality/00_dq/02_dq_executa_cadastro_fonte_dado"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
