@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": {
-						"value": "/Workspace/Repos/ws_projeto_azure/WS_DATABRICKS_20240503/prj_data_quality/00_dq/dq_executa_cadastro_fonte_dado.py",
+						"value": "/Repos/ws_projeto_azure/WS_DATABRICKS_20240503/prj_data_quality/00_dq/dq_executa_cadastro_fonte_dado.py",
 						"type": "Expression"
 					}
 				},
