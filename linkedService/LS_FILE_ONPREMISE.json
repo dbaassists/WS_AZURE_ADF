@@ -5,9 +5,9 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "C:\\\\Temp\\\\Python_YT\\\\Git\\\\Projeto_do_Azure_ate_Data_Factory\\\\03_MATERIAL_APOIO\\\\Framework\\\\Arquivos",
+			"host": "C:\\\\Temp\\\\Python_YT\\\\Git\\\\Projeto_do_Azure_ate_Data_Factory\\\\03_MATERIAL_APOIO\\\\Framework\\\\DADOS_BASE",
 			"userId": "adf",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0NDcwYjM0NC1jNDNlLTRiZTMtOWZmZS05MTcyZDQzOTc5NTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3ZDNhNWY1My1lZjJmLTRkNWEtYmNiYi0zYzVlOTAyMWFmOTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "IR-OnPremise",
