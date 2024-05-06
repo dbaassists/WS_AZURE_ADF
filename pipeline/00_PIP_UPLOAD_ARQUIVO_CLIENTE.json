@@ -16,9 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -165,7 +171,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_SQL_SERVER",
+						"referenceName": "DS_ARQUIVO_CSV",
 						"type": "DatasetReference"
 					}
 				],
