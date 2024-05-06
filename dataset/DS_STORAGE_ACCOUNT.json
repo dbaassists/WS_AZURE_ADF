@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "00_CLIENTE.csv",
-				"folderPath": "landing_zone/cliente",
+				"fileName": "01_clientes.csv",
+				"folderPath": "fontes/cliente",
 				"fileSystem": "dados"
 			},
 			"columnDelimiter": ";",
