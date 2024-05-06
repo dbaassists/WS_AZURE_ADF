@@ -7,7 +7,7 @@
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline1",
+						"activity": "Upload File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -40,7 +40,7 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Upload File",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"policy": {
