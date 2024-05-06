@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/prj_data_quality/00_dq/03_dq_executa_validacao_arquivo_dado",
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/03_dq_executa_validacao_arquivo_dado",
 					"baseParameters": {
 						"idprojeto": {
 							"value": "@pipeline().parameters.idprojeto",
