@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "EXTRATOR_DADOS_CLIENTE",
+				"name": "UPLOAD_DADOS_CLIENTE",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
