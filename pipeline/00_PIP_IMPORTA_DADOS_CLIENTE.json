@@ -75,7 +75,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/carga_cliente/01_carga_bronze"
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_integracao_dados/01_carga_cliente/01_carga_bronze"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
@@ -102,7 +102,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/carga_cliente/02_carga_silver"
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_integracao_dados/01_carga_cliente/02_carga_silver"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
@@ -129,7 +129,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/carga_cliente/03_carga_gold"
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_integracao_dados/01_carga_cliente/03_carga_gold"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
