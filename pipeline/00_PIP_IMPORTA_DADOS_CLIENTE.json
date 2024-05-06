@@ -1,6 +1,48 @@
 {
 	"name": "00_PIP_IMPORTA_DADOS_CLIENTE",
 	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/prj_data_quality/00_dq/03_dq_executa_validacao_arquivo_dado",
+					"baseParameters": {
+						"idprojeto": {
+							"value": "@pipeline().parameters.idprojeto",
+							"type": "Expression"
+						},
+						"idfontedado": {
+							"value": "@pipeline().parameters.idfontedado",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DATABRICKS",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"idprojeto": {
+				"type": "string",
+				"defaultValue": "1"
+			},
+			"idfontedado": {
+				"type": "string",
+				"defaultValue": "1"
+			}
+		},
 		"annotations": []
 	}
 }
