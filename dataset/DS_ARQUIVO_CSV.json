@@ -1,0 +1,22 @@
+{
+	"name": "DS_ARQUIVO_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_FILE_ONPREMISE",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "00_cliente.csv"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
