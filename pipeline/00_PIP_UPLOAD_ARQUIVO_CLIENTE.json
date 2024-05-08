@@ -50,7 +50,13 @@
 				"inputs": [
 					{
 						"referenceName": "DS_ARQUIVO_CSV",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"arquivo": {
+								"value": "@pipeline().parameters.par_arquivo",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -61,6 +67,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"par_arquivo": {
+				"type": "string",
+				"defaultValue": "01_clientes.csv"
+			}
+		},
 		"folder": {
 			"name": "data_quality"
 		},
