@@ -1,0 +1,27 @@
+{
+	"name": "DS_STORAGE_ACCOUNT_XLSX_DQ",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_DATA_LAKE",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"arquivo_xlsx": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().arquivo_xlsx",
+					"type": "Expression"
+				},
+				"folderPath": "data_quality",
+				"fileSystem": "dados"
+			}
+		}
+	}
+}
