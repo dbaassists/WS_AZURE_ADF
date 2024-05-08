@@ -34,6 +34,7 @@
 					],
 					"storeSettings": {
 						"type": "FileServerReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -167,7 +168,7 @@
 							]
 						},
 						{
-							"name": "Delete1",
+							"name": "Elimina_Arquivo_Importado",
 							"type": "Delete",
 							"dependsOn": [
 								{
