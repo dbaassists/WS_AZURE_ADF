@@ -5,9 +5,9 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "C:\\\\Temp\\\\",
+			"host": "C:\\Temp\\DQ\\arquivo_dq",
 			"userId": "adf",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjNmEwYzUwYy01ZWZlLTQ4YTctYTkyOC1jNTlkMmJmMGY1YzUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlYTRmZTRkOS01OGExLTQ5OTctYWRjYi1hOTRiZGQ1ODdhOGYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "IR-OnPremise",
