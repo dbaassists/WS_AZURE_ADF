@@ -38,11 +38,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DS_ARQUIVO_CSV_DQ",
+						"referenceName": "DS_ARQUIVO_DQ",
 						"type": "DatasetReference",
 						"parameters": {
-							"diretorio": "DQ\\arquivo_dq",
-							"arquivo": "*.csv"
+							"arquivo_xlsx": "*"
 						}
 					},
 					"fieldList": [
@@ -53,9 +52,72 @@
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
+						"type": "BinaryReadSettings"
 					}
 				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ARQUIVO_DQ",
+						"type": "DatasetReference",
+						"parameters": {
+							"arquivo_xlsx": {
+								"value": "@activity('Get Metadata1').output.itemName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_STORAGE_ACCOUNT_XLSX_DQ",
+						"type": "DatasetReference",
+						"parameters": {
+							"arquivo_xlsx": {
+								"value": "@activity('Get Metadata1').output.itemName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"folder": {
