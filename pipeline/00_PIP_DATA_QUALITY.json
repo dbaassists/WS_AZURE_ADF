@@ -23,6 +23,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "data_quality"
+		},
 		"annotations": []
 	}
 }
