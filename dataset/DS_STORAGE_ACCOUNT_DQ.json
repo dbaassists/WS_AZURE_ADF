@@ -5,11 +5,20 @@
 			"referenceName": "LS_DATA_LAKE",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"arquivo": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().arquivo",
+					"type": "Expression"
+				},
 				"folderPath": "data_quality",
 				"fileSystem": "dados"
 			},
