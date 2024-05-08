@@ -5,6 +5,14 @@
 			"referenceName": "LS_DATA_LAKE",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"diretorio_lake": {
+				"type": "string"
+			},
+			"arquivo_lake": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
