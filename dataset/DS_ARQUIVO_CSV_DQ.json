@@ -6,9 +6,6 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"diretorio": {
-				"type": "string"
-			},
 			"arquivo": {
 				"type": "string"
 			}
