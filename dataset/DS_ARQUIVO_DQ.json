@@ -1,0 +1,25 @@
+{
+	"name": "DS_ARQUIVO_DQ",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_FILE_ONPREMISE_DQ",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"arquivo_xlsx": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": {
+					"value": "@dataset().arquivo_xlsx",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
