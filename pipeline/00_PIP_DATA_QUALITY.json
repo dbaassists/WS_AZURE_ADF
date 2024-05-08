@@ -191,7 +191,7 @@
 										}
 									}
 								},
-								"enableLogging": true,
+								"enableLogging": false,
 								"storeSettings": {
 									"type": "FileServerReadSettings",
 									"recursive": true,
