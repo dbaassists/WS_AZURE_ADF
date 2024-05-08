@@ -195,7 +195,10 @@
 								"storeSettings": {
 									"type": "FileServerReadSettings",
 									"recursive": true,
-									"wildcardFileName": "*.xlsx",
+									"wildcardFileName": {
+										"value": "@item().name",
+										"type": "Expression"
+									},
 									"enablePartitionDiscovery": false
 								}
 							}
