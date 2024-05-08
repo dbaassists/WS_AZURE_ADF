@@ -3,29 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "DQ - Cadastro Fonte Dados",
-				"type": "DatabricksNotebook",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/02_dq_executa_cadastro_fonte_dado"
-				},
-				"linkedServiceName": {
-					"referenceName": "LS_DATABRICKS",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Get Metadata1",
+				"name": "Etapa_Busca_Arquivo_DQ",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -57,67 +35,133 @@
 				}
 			},
 			{
-				"name": "Copy data1",
-				"type": "Copy",
+				"name": "If Condition1",
+				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Etapa_Filtro_XLSX",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					}
 				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "BinarySource",
-						"storeSettings": {
-							"type": "FileServerReadSettings",
-							"recursive": true
-						},
-						"formatSettings": {
-							"type": "BinaryReadSettings"
-						}
+					"expression": {
+						"value": "@greater(activity('Etapa_Filtro_XLSX').output.FilteredItemsCount,0)",
+						"type": "Expression"
 					},
-					"sink": {
-						"type": "BinarySink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_ARQUIVO_DQ",
-						"type": "DatasetReference",
-						"parameters": {
-							"arquivo_xlsx": {
-								"value": "@activity('Get Metadata1').output.itemName",
-								"type": "Expression"
+					"ifTrueActivities": [
+						{
+							"name": "DQ - Cadastro Fonte Dados_copy1",
+							"type": "DatabricksNotebook",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
+							"dependsOn": [
+								{
+									"activity": "Copy data1_copy1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/02_dq_executa_cadastro_fonte_dado"
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_DATABRICKS",
+								"type": "LinkedServiceReference"
 							}
+						},
+						{
+							"name": "Copy data1_copy1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "FileServerReadSettings",
+										"recursive": true
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_ARQUIVO_DQ",
+									"type": "DatasetReference",
+									"parameters": {
+										"arquivo_xlsx": {
+											"value": "@activity('Etapa_Filtro_XLSX').output.value.name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_STORAGE_ACCOUNT_XLSX_DQ",
+									"type": "DatasetReference",
+									"parameters": {
+										"arquivo_xlsx": {
+											"value": "@activity('Etapa_Filtro_XLSX').output.value.name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
+					]
+				}
+			},
+			{
+				"name": "Etapa_Filtro_XLSX",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Etapa_Busca_Arquivo_DQ",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
-				"outputs": [
-					{
-						"referenceName": "DS_STORAGE_ACCOUNT_XLSX_DQ",
-						"type": "DatasetReference",
-						"parameters": {
-							"arquivo_xlsx": {
-								"value": "@activity('Get Metadata1').output.itemName",
-								"type": "Expression"
-							}
-						}
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Etapa_Busca_Arquivo_DQ').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endswith(item().name, '.xlsx')",
+						"type": "Expression"
 					}
-				]
+				}
 			}
 		],
 		"folder": {
