@@ -35,8 +35,31 @@
 				}
 			},
 			{
-				"name": "If Condition1",
-				"type": "IfCondition",
+				"name": "Etapa_Filtro_XLSX",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Etapa_Busca_Arquivo_DQ",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Etapa_Busca_Arquivo_DQ').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endswith(item().name, '.xlsx')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
 				"dependsOn": [
 					{
 						"activity": "Etapa_Filtro_XLSX",
@@ -47,19 +70,20 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"expression": {
-						"value": "@greater(activity('Etapa_Filtro_XLSX').output.FilteredItemsCount,0)",
+					"items": {
+						"value": "@activity('Etapa_Filtro_XLSX').output.Value",
 						"type": "Expression"
 					},
-					"ifTrueActivities": [
+					"isSequential": true,
+					"activities": [
 						{
-							"name": "DQ - Cadastro Fonte Dados_copy1",
+							"name": "DQ - Cadastro Fonte",
 							"type": "DatabricksNotebook",
 							"state": "Inactive",
 							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
-									"activity": "Copy data1_copy1",
+									"activity": "Upload_File",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -82,10 +106,8 @@
 							}
 						},
 						{
-							"name": "Copy data1_copy1",
+							"name": "Upload_File",
 							"type": "Copy",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -120,7 +142,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"arquivo_xlsx": {
-											"value": "@activity('Etapa_Filtro_XLSX').output.value.name",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
@@ -132,46 +154,14 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"arquivo_xlsx": {
-											"value": "@activity('Etapa_Filtro_XLSX').output.value.name",
+											"value": "item().name",
 											"type": "Expression"
 										}
 									}
 								}
 							]
-						},
-						{
-							"name": "Wait1",
-							"type": "Wait",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"waitTimeInSeconds": 1
-							}
 						}
 					]
-				}
-			},
-			{
-				"name": "Etapa_Filtro_XLSX",
-				"type": "Filter",
-				"dependsOn": [
-					{
-						"activity": "Etapa_Busca_Arquivo_DQ",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Etapa_Busca_Arquivo_DQ').output.childItems",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@endswith(item().name, '.xlsx')",
-						"type": "Expression"
-					}
 				}
 			}
 		],
