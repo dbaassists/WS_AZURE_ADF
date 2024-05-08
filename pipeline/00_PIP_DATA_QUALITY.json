@@ -58,7 +58,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "Etapa_Carga_Dados_Storage",
 				"type": "ForEach",
 				"dependsOn": [
 					{
