@@ -21,6 +21,10 @@
 				"fileName": {
 					"value": "@dataset().arquivo",
 					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().diretorio",
+					"type": "Expression"
 				}
 			},
 			"columnDelimiter": ";",
