@@ -79,8 +79,6 @@
 						{
 							"name": "DQ - Cadastro Fonte",
 							"type": "DatabricksNotebook",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Upload_File",
