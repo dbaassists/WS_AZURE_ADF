@@ -66,7 +66,17 @@
 				"outputs": [
 					{
 						"referenceName": "DS_STORAGE_ACCOUNT",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"diretorio_lake": {
+								"value": "@pipeline().parameters.par_diretorio_lake",
+								"type": "Expression"
+							},
+							"arquivo_lake": {
+								"value": "@pipeline().parameters.par_arquivo",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
@@ -79,6 +89,10 @@
 			"par_diretorio": {
 				"type": "string",
 				"defaultValue": "Python_YT\\Git\\Projeto_do_Azure_ate_Data_Factory\\03_MATERIAL_APOIO\\Framework\\DADOS_BASE"
+			},
+			"par_diretorio_lake": {
+				"type": "string",
+				"defaultValue": "fontes/cliente"
 			}
 		},
 		"folder": {
