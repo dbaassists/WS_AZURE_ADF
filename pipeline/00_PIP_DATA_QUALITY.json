@@ -207,6 +207,37 @@
 									"enablePartitionDiscovery": false
 								}
 							}
+						},
+						{
+							"name": "Move_Arquivo_Processado",
+							"type": "DatabricksNotebook",
+							"dependsOn": [
+								{
+									"activity": "DQ - Cadastro Fonte",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"notebookPath": "/util/01_util_move_arquivo",
+								"baseParameters": {
+									"var_diretorio_arquivo": "/dbfs/mnt/dados/data_quality/",
+									"var_diretorio_arquivo_processado": "Processado"
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "LS_DATABRICKS",
+								"type": "LinkedServiceReference"
+							}
 						}
 					]
 				}
