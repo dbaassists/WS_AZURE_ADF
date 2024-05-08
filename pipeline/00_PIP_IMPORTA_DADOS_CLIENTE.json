@@ -42,7 +42,14 @@
 			{
 				"name": "Upload File",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Inicio_Process_Cadastro_Fonte_Dado",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureInput": false
 				},
@@ -161,6 +168,151 @@
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Inicio_Process_Cadastro_Fonte_Dado",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/04_dq_notifica_processo_cadastro",
+					"baseParameters": {
+						"fromaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"toaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"assunto": {
+							"value": "Data Quality - Início do Processo de Carga de Dados de Cliente",
+							"type": "Expression"
+						},
+						"msg": {
+							"value": "Prezado Usuário, \n\nO processo de carga do seu arquivo de dados foi iniciado.\n\nAtenciosamente\n\nData Quality",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DATABRICKS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SUCESSO_Termino_Process_Cadastro_Fonte_Dado",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "move_arquivo_cliente",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/04_dq_notifica_processo_cadastro",
+					"baseParameters": {
+						"fromaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"toaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"assunto": {
+							"value": "Data Quality - Sucesso no Processamento do Arquivo Dados de Cliente",
+							"type": "Expression"
+						},
+						"msg": {
+							"value": "Prezado Usuário, \n\nO processamento do arquivo de dados de cliente foi realizado com sucesso.\n\nAtenciosamente\n\nData Quality",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DATABRICKS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "FALHA_Termino_Process_Cadastro_Fonte_Dado",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "move_arquivo_cliente",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/04_dq_notifica_processo_cadastro",
+					"baseParameters": {
+						"fromaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"toaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"assunto": {
+							"value": "Data Quality - Falha no Processamento do Arquivo Dados de Cliente",
+							"type": "Expression"
+						},
+						"msg": {
+							"value": "Prezado Usuário, \n\nOcorreu um erro durante o processamento do arquivo de dados de cliente.\n\nAtenciosamente\n\nData Quality",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DATABRICKS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Erro_Forcado",
+				"type": "Fail",
+				"dependsOn": [
+					{
+						"activity": "FALHA_Termino_Process_Cadastro_Fonte_Dado",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"message": "Ocorreu um erro durante o processo de cadastro da fonte de dado",
+					"errorCode": "999"
 				}
 			}
 		],
