@@ -5,12 +5,20 @@
 			"referenceName": "LS_FILE_ONPREMISE",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"arquivo": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "FileServerLocation",
-				"fileName": "01_clientes.csv"
+				"fileName": {
+					"value": "@dataset().arquivo",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ";",
 			"escapeChar": "\\",
