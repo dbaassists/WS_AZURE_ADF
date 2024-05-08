@@ -18,8 +18,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "01_clientes.csv",
-				"folderPath": "fontes/cliente",
+				"fileName": {
+					"value": "@dataset().arquivo_lake",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().diretorio_lake",
+					"type": "Expression"
+				},
 				"fileSystem": "dados"
 			},
 			"columnDelimiter": ";",
