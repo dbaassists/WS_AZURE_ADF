@@ -6,6 +6,9 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
+			"diretorio": {
+				"type": "string"
+			},
 			"arquivo": {
 				"type": "string"
 			}
@@ -17,6 +20,10 @@
 				"type": "FileServerLocation",
 				"fileName": {
 					"value": "@dataset().arquivo",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().diretorio",
 					"type": "Expression"
 				}
 			},
