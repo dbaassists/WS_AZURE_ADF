@@ -52,8 +52,12 @@
 						"referenceName": "DS_ARQUIVO_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"arquivo": {
+							"diretorio": {
 								"value": "@pipeline().parameters.par_arquivo",
+								"type": "Expression"
+							},
+							"arquivo": {
+								"value": "@pipeline().parameters.par_diretorio",
 								"type": "Expression"
 							}
 						}
@@ -71,6 +75,10 @@
 			"par_arquivo": {
 				"type": "string",
 				"defaultValue": "01_clientes.csv"
+			},
+			"par_diretorio": {
+				"type": "string",
+				"defaultValue": "Python_YT\\Git\\Projeto_do_Azure_ate_Data_Factory\\03_MATERIAL_APOIO\\Framework\\DADOS_BASE"
 			}
 		},
 		"folder": {
