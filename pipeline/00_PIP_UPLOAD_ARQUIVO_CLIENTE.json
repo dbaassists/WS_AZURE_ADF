@@ -53,11 +53,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"diretorio": {
-								"value": "@pipeline().parameters.par_arquivo",
+								"value": "@pipeline().parameters.par_diretorio",
 								"type": "Expression"
 							},
 							"arquivo": {
-								"value": "@pipeline().parameters.par_diretorio",
+								"value": "@pipeline().parameters.par_arquivo",
 								"type": "Expression"
 							}
 						}
