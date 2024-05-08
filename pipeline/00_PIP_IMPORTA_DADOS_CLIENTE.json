@@ -163,7 +163,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/util/04_move_arquivo_cliente"
+					"notebookPath": "/util/02_util_move_arquivo_cliente"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_DATABRICKS",
