@@ -5,7 +5,14 @@
 			{
 				"name": "Etapa_Busca_Arquivo_DQ",
 				"type": "GetMetadata",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Inicio_Process_Cadastro_Fonte_Dado",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -202,6 +209,89 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Inicio_Process_Cadastro_Fonte_Dado",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/04_dq_notifica_processo_cadastro",
+					"baseParameters": {
+						"fromaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"toaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"assunto": {
+							"value": "Data Quality - Início do Processo de Cadastro",
+							"type": "Expression"
+						},
+						"msg": {
+							"value": "Prezado Usuário, \n\nO processo de cadastro da sua fonte de dado foi iniciado.\n\nAtenciosamente\n\nData Quality",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DATABRICKS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Termino_Process_Cadastro_Fonte_Dado_copy1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "Etapa_Carga_Dados_Storage",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Shared/WS_DATABRICKS/prj_data_quality/00_dq/04_dq_notifica_processo_cadastro",
+					"baseParameters": {
+						"fromaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"toaddr": {
+							"value": "dbaassists@gmail.com",
+							"type": "Expression"
+						},
+						"assunto": {
+							"value": "Data Quality - Término do Processo de Cadastro",
+							"type": "Expression"
+						},
+						"msg": {
+							"value": "Prezado Usuário, \n\nO processo de cadastro da sua fonte de dado foi concluído com sucesso.\n\nAtenciosamente\n\nData Quality",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DATABRICKS",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
